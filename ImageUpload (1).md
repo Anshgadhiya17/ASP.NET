@@ -7,8 +7,10 @@ namespace Praticse.Models
 {
     public class UserModal
     {
+        public int? id { get; set; }
         public IFormFile profileImg { get; set; }
-        public string name;
+        public string profileImgSrc { get; set; }
+        public string name {get; set;}
     }
 }
 
