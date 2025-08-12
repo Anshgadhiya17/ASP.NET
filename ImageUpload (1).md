@@ -185,19 +185,73 @@ public class ImageHelper
 }
 ```
 
-### View: Index.cshtml
+### View: AddEdit.cshtml
 
 - Upload form with `multipart/form-data`.
 
 ```csharp
+@model UserModal
+
+<form enctype="multipart/form-data" method="post" asp-action="Save" asp-controller="Home">
+    <input type="hidden" asp-for="id" />
+    <input type="hidden" asp-for="profileImgSrc" />
+    <input asp-for="name" />
+    <br>
+    @{
+        if (Model.profileImgSrc != null)
+        {
+            <img
+                class="img img-round w-25 border rounded-pill"
+                src="@Url.Content("/" + Model.profileImgSrc)" 
+                alt="Profile image"
+            >
+        }
+    }
+    @Html.TextBoxFor(model => model.profileImg, new { type = "file", @class = "form-control" })
+    <br>
+
+    <input type="submit" />
+</form>
+```
+
+### View: Index.cshtml
+
+- display image
+
+```csharp
+@model List<UserModal>
+@{
+    ViewData["Title"] = "Home Page";
+}
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
 
-    <form enctype="multipart/form-data" method="post" asp-action="Save" asp-controller="Home">
-        <input name="name" />
-        <input type="file" name="profileImg" />
-        <input type="submit" />
-    </form>
+    <table class="table table-border">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        @{
+            foreach(UserModal user in Model){
+                <tr>
+                    <th><img width="200" src="@user.profileImgSrc"></th>
+                    <th>@user.name</th>
+                    <th>
+                        <a 
+                            class="btn btn-success"
+                            asp-action="AddEdit" 
+                            asp-controller="Home" 
+                            asp-route-id="@user.id"
+                        >Edit</a>
+                    </th>
+                </tr>
+            }
+        }
+    </table>
+    
 </div>
+
 ```
