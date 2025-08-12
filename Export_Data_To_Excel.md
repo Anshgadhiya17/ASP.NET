@@ -113,9 +113,9 @@ below given button triggers the ExportToExcel action.
 
 ```html
 <a class="btn btn-success ms-2"
-    asp-area="State"
     asp-controller="State"
     asp-action="ExportToExcel">
     Export To Excel
 </a>
+
 ```
