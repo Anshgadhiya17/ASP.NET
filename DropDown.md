@@ -48,7 +48,7 @@ public void CountryDropDown()
     SqlCommand command2 = connection.CreateCommand();
     command2.CommandType = System.Data.CommandType.StoredProcedure;
     command2.CommandText = "PR_Country_SelectForDropDown";
-    command2.Parameters.Add("@UserID", SqlDbType.Int).Value = CommonVariable.UserID();
+    //command2.Parameters.Add("@UserID", SqlDbType.Int).Value = CommonVariable.UserID();
     SqlDataReader reader2 = command2.ExecuteReader();
     DataTable dataTable2 = new DataTable();
     dataTable2.Load(reader2);
