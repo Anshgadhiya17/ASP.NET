@@ -153,6 +153,11 @@ public IActionResult UserLogin(UserLoginModel userLoginModel)
 
     return RedirectToAction("Login");
 }
+
+public IActionResult Login()
+{
+    return View();
+}
 ```
 
 ## Step 3: Create the Login Page (`Login.cshtml`)
@@ -392,4 +397,24 @@ app.MapControllerRoute(
 
 app.Run();
 ```
+## Step 9: **Use Common Variable in different files**
 
+1. **_Layout.cshtml:**
+
+### Code:
+
+```csharp
+<a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+    <img src="~/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+    <span class="d-none d-md-block dropdown-toggle ps-2">@CommonVariable.UserName()</span>
+</a>
+```
+## Step 9: **Logout**
+
+1. **_Layout.cshtml:**
+
+### Code:
+
+```csharp
+<li><a asp-controller="User" asp-action="Logout"><button class="btn btn-danger m-3">Logout</button></a></li>
+```
