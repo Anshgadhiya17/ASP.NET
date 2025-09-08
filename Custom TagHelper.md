@@ -36,7 +36,7 @@ namespace MyApp.TagHelpers
 Open `_ViewImports.cshtml` (inside `Views`) and add:
 
 ```razor
-@addTagHelper *, MyApp   <!-- Replace MyApp with your project name -->
+@addTagHelper *, namespaceOfCustomTagHelper   <!-- Replace MyApp with your project name -->
 ```
 ## Step 3: Usage (Index.cshtml):
 
